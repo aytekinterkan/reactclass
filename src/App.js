@@ -7,12 +7,12 @@ import Lists from "./5-Lists/Lists";
 function App() {
   return (
     <div>
-      {/* <JSX/> */}
-      {/* <Props/> */}
-      {/* <Events/> */}
-      {/* <Conditionals/> */}
+      {/* <JSX/>
+      <Props/>
+      <Events/>
+      <Conditionals/> */}
       <Lists/>
-
+    
       
    
     </div>

@@ -9,7 +9,7 @@ import Props from './2-Props/Props';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Props/>
+    <App/>
     
   </React.StrictMode>
 );
