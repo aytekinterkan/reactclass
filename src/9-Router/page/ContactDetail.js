@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 
 const ContactDetail = () => {
 
     const {id}=useParams();
-    const[user,setUser]=useState(null)
+    // const[user,setUser]=useState(null)
+
+    const location=useLocation();
+    const [user,setUser]=useState(location.state[Number(id)-1])
+
+
+    // useEffect(()=>{
+    //     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+    //     .then((res)=>res.json())
+    //     .then(data=>setUser(data))
+    // },[id])
+
+
     useEffect(()=>{
-        fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-        .then((res)=>res.json())
-        .then(data=>setUser(data))
-    },[])
+      setUser(location.state[Number(id)-1])
+
+    },[location.state,id])
   return (
     <div>
         <h2>User Detail</h2>
@@ -19,6 +30,12 @@ const ContactDetail = () => {
             <p>{user.email}</p>
             </>
         )}
+        {/* <Link to={`/contact/${Number(id)-1}`}>Önceki kullanıcı</Link>
+        &emsp;
+        <Link to={`/contact/${Number(id)+1}`}>Sonraki kullanıcı</Link> */}
+        <Link to={`/contact/${Number(id)-1}`} state={location.state}>Önceki kullanıcı</Link>
+        &emsp;
+        <Link to={`/contact/${Number(id)+1}`}state={location.state}>Sonraki kullanıcı</Link>
     </div>
   )
 }
